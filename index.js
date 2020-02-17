@@ -186,9 +186,14 @@ processContains("foo", ["foo", "bar"], (bool) => bool ? 'nice!' : 'sad');
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  list.splice(0,list.length, ...(new Set(list)))
+  return list;
 }
+
+processDuplicateFree([1,1,2,2,3,3], (arr) => arr);
+
+
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
