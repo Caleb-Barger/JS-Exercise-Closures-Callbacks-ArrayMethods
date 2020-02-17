@@ -92,11 +92,17 @@ processLastItem(["Foo", "Bar"], (aString) => aString + aString);
  * should return 1000.
 */
 function processSum(numberList, callback) {
+  let sum = 0;
+  numberList.forEach(function(item) {
+    sum += item;
+  })
+
+  return callback(sum);
   
 }
 
-processSum([10,20,30], (num) => `${num} is a big number`);
-// processSum([], (num) => num + 1000);
+processSum([10,20,30], (num) => num + " is a big number!");
+
 
 /**
  * ### Challenge `processProduct`
@@ -116,9 +122,12 @@ processSum([10,20,30], (num) => `${num} is a big number`);
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  let product = num1 * num2;
+  return callback(product);
 }
+
+processProduct(2, 7, (num) => num + " is a big number!");
 
 /**
  * ### Challenge `processContains`
@@ -140,9 +149,20 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
+function processContains(item, list, callback) {
+  let isInList = null;
+  list.forEach(function(currentValue) {
+    if (currentValue === item) {
+      isInList = true;
+    }
+    else {
+      isInList = false;
+    }
+  });
+  return callback(isInList);
 }
+
+processContains("potato", ["foo", "bar"], (bool) => bool ? 'nice!' : 'sad');
 
 /**
  * ### Challenge `processDuplicateFree`
